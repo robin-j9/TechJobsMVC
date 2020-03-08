@@ -6,6 +6,7 @@ namespace TechJobs.Controllers
 {
     public class SearchController : Controller
     {
+        //internal static string savedSearchType = "all";
         public IActionResult Index()
         {
             ViewBag.columns = ListController.columnChoices;
@@ -20,6 +21,7 @@ namespace TechJobs.Controllers
         {
             ViewBag.columns = ListController.columnChoices;
             ViewBag.jobs = JobData.FindByColumnAndValue(searchType, searchTerm);
+            ViewBag.savedSearchType = searchType;
             return View("Index");
         }
     }

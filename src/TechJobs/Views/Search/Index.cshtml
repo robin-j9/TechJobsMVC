@@ -1,4 +1,11 @@
-﻿<h1>@ViewBag.title</h1>
+﻿@{ 
+    if (ViewBag.savedSearchType == null)
+    {
+        ViewBag.savedSearchType = "all";
+    }
+}
+
+<h1>@ViewBag.title</h1>
 
 <form action="/Search/Results">
     <h2>Search by:</h2>
@@ -11,7 +18,7 @@
                        name="searchType"
                        id="@column.Key"
                        value="@column.Key" 
-                       checked="@column.Key == 'all''"/>
+                       checked="@column.Key.Equals(ViewBag.savedSearchType)"/>
                 <label for="@column.Key">@column.Value</label>
             </span>
         }
