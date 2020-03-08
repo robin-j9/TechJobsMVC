@@ -47,7 +47,16 @@
             {
                 <tr>
                     <td>@field.Key.Substring(0,1).ToUpper()@field.Key.Substring(1)</td>
-                    <td>@field.Value</td>
+                    <td>
+                        @if (field.Key != "name")
+                        {
+                            <a asp-controller="List" asp-action="Jobs" asp-route-column="@field.Key" asp-route-value="@field.Value">@field.Value</a>
+                        }
+                        else
+                        {
+                            @field.Value
+                        }
+                    </td>
                 </tr>
             }
         </table>
