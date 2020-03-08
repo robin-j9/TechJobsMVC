@@ -46,7 +46,7 @@
             @foreach (KeyValuePair<string, string> field in job)
             {
                 <tr>
-                    <td>@field.Key</td>
+                    <td>@field.Key.Substring(0,1).ToUpper()@field.Key.Substring(1)</td>
                     <td>@field.Value</td>
                 </tr>
             }
