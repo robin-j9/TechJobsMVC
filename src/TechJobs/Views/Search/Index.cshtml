@@ -16,7 +16,7 @@
             <span>
                 <input type="radio"
                        name="searchType"
-                       id="@column.Key"
+                       id="@column.Key"e
                        value="@column.Key" 
                        checked="@column.Key.Equals(ViewBag.savedSearchType)"/>
                 <label for="@column.Key">@column.Value</label>
@@ -40,26 +40,6 @@
     <h3>@ViewBag.jobs.Count Result(s)</h3>
 
     // TODO #2 - Loop over jobs dictionary and display all job fields
-    @foreach (Dictionary<string, string> job in ViewBag.jobs)
-    {
-        <table class="job-listing">
-            @foreach (KeyValuePair<string, string> field in job)
-            {
-                <tr>
-                    <td>@field.Key.Substring(0,1).ToUpper()@field.Key.Substring(1)</td>
-                    <td>
-                        @if (field.Key != "name")
-                        {
-                            <a asp-controller="List" asp-action="Jobs" asp-route-column="@field.Key" asp-route-value="@field.Value">@field.Value</a>
-                        }
-                        else
-                        {
-                            @field.Value
-                        }
-                    </td>
-                </tr>
-            }
-        </table>
-        
-    }
+    
+    @await Html.PartialAsync("_DisplayJobs")
 }

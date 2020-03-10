@@ -1,0 +1,26 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@foreach (Dictionary<string, string> job in ViewBag.jobs)
+{
+    <table class="job-listing">
+        @foreach (KeyValuePair<string, string> field in job)
+        {
+            <tr>
+                <td>@field.Key.Substring(0, 1).ToUpper()@field.Key.Substring(1)</td>
+                <td>
+                    @if (field.Key != "name")
+                    {
+                        <a asp-controller="List" asp-action="Jobs" asp-route-column="@field.Key" asp-route-value="@field.Value">@field.Value</a>
+                    }
+                    else
+                    {
+                        @field.Value
+                    }
+                </td>
+            </tr>
+        }
+    </table>
+
+}
